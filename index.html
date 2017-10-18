@@ -6,8 +6,8 @@
       <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css' />
       <link href='http://fonts.googleapis.com/css?family=Merriweather:300' rel='stylesheet' type='text/css'/>
       <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:200,400,700' rel='stylesheet' type='text/css'/>
-      <link rel="stylesheet" type="text/css" href="https://brikeats.github.io/theme/css/icons.css"/>
-      <link rel="stylesheet" type="text/css" href="https://brikeats.github.io/theme/css/styles.css"/>
+      <link rel="stylesheet" type="text/css" href="http://brikeats.github.io/theme/css/icons.css"/>
+      <link rel="stylesheet" type="text/css" href="http://brikeats.github.io/theme/css/styles.css"/>
       <meta charset="utf-8" />
   </head>
 
@@ -22,7 +22,7 @@
         </div>
 
       <div class = "sitebanner">
-        <h1><a class="sitetitle nodec" href="https://brikeats.github.io">Brian Keating</a></h1>
+        <h1><a class="sitetitle nodec" href="http://brikeats.github.io">Brian Keating</a></h1>
         <h3 class ="sitesubtitle">Compter Vision Guy</h3>
         <!-- nav -->
         <nav class="menu">
@@ -43,90 +43,8 @@
 <div class="content">
   <div class="article">
     <h1>Brian Keating</h1>
-    <p>Lorem ipsum dolor sit amet, some math: <span class="math">\(\chi^2\)</span> consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-</p>
-<div class="math">$$\alpha_0^\xi$$</div>
-<p><a href="https://brikeats.github.io/images/headshot.jpg">image link</a>
-<a href="https://www.youtube.com/watch?v=uPN-GcFqN1o"><img alt="Alt text" src="https://img.youtube.com/vi/uPN-GcFqN1o/0.jpg"></a></p>
-<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-<p>https://www.youtube.com/watch?v=uPN-GcFqN1o</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut some latex: <span class="math">\(\chi^2\)</span> labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris <code>code_stuff_here</code> nisi ut aliquip ex ea commodo consequat.</p>
-<p><img alt="Alt Text" src="https://brikeats.github.io/images/lenet.jpg"></p>
-<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
-
-<span class="k">def</span> <span class="nf">deskew</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">moments</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;mu02&#39;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">1e-2</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">img</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="n">skew</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="s1">&#39;mu11&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;mu02&#39;</span><span class="p">]</span>
-    <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="n">skew</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">SZ</span><span class="o">*</span><span class="n">skew</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">warpAffine</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="p">(</span><span class="n">SZ</span><span class="p">,</span> <span class="n">SZ</span><span class="p">),</span> <span class="n">flags</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">WARP_INVERSE_MAP</span> <span class="o">|</span> <span class="n">cv2</span><span class="o">.</span><span class="n">INTER_LINEAR</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">img</span>
-</pre></div>
-
-
-<ul>
-<li>list item</li>
-<li>list item2</li>
-</ul>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</p>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script>
+    <p>I'm a computer vision dude yadda yadda who has worked professionally analyzing medical, satellite, and microscopy imagery. Currently, I lead the Computer Vision group as part of <a href="www.uptake.com">Uptake's</a> data science team. Previously, I worked at the University of Chicago's Research Computing Center, and at the Univerty of Hawaii's MRI research group. You can see my <a href="http://brikeats.github.io/pdfs/old_resume.pdf">resume here</a> and an full academic <a href="http://brikeats.github.io/pdfs/old_cv.pdf">cirriculum vitae here</a>.</p>
+<p>The remarkable success of deep learning in computer vision has led me to increasingly reach to convolutional neural nets as the backbone of much of my work analyzing satellite imagery. Reading up on the literature for deep learning, it is hard not become excited about in the possibilities of AI in the coming years. I'm particularly interested in computer vision especially in embodied systems, i.e., robots.  <a href="">My blog</a> will serve as a clearinghouse for demos, documentation, links, and notes related to personal projects (particularly robotics).</p>
   </div>
 </div>
 
