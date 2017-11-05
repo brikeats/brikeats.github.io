@@ -57,14 +57,14 @@
   </div><!-- .postinfo -->
 
   <div class="article">
-    <p><img alt="eclipse totality" src="/images/totality.jpg"></p>
+    <p><img alt="eclipse totality" src="/images/totality.jpg" /></p>
 <p>My wife and I were fortunate enough to be able to see the eclipse in August just outside of Salem, Oregon. Our friend, Heidi, drove us down from Seattle where we were vacationing. I was concerned about the weather -- it's a bit of a drive and coastal Oregon isn't known for being sunny -- but it turned out to be a beautiful cloudless day and totality was just spectacular. I didn't get any pics of totality, but Heidi had brought her non-phone camera and got some good pics of totality (including the one above) and a video of the "diamond ring". She didn't have a tripod, so the sun wanders about in the frame:</p>
 <h1></h1>
 <p><iframe width="560" height="315" src="https://www.youtube.com/embed/q3EKl2VAPe0" frameborder="0" allowfullscreen></iframe></p>
 <h1></h1>
-<p>Looks pretty awesome, but I wanted to correct for this motion. This is a fairly easy problem, since the sun is infinitely far away and it doesn't change shape (so we only need to find 2 translations to register the frames), and the background is featureless black sky. I initially tried creating an eclipse-looking template, and using that to search each frame for the sun's position. This mostly worked well, but it was not robust -- it failed badly for some frames. I believe that some of the lens flares and other artifacts hurt the performance.</p>
+<p>Looks pretty awesome, but I wanted to correct for this motion. This is a fairly easy problem, since the sun is infinitely far away and it doesn't change shape (so we only need to find 2 translations to register the frames), and the background is featureless black sky. I initially tried creating an eclipse-looking template, and used that to search each frame for the sun's position. This mostly worked well, but it was not robust -- it failed badly for some frames. I believe that some of the lens flares and other artifacts hurt the performance.</p>
 <p>Finally, I just used <a href="http://scikit-image.org/docs/dev/auto_examples/transform/plot_register_translation.html">skimage's register_translation</a> function to register consecutive frames. With the correct translations in hand, I zero pad the images such that the sun is in the center of every frame, write the images to file, and make them into a movie with ffmpeg. I also grabbed this image of the diamond ring:</p>
-<p><img alt="eclipse diamond ring" src="/images/diamond_ring.jpg"></p>
+<p><img alt="eclipse diamond ring" src="/images/diamond_ring.jpg" /></p>
 <p>The final result:</p>
 <h1></h1>
 <p><iframe width="560" height="315" src="https://www.youtube.com/embed/uao88kE0ukA" frameborder="0" allowfullscreen></iframe></p>
