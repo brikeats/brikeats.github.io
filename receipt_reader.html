@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+      <title>A Pelican Blog</title>
+      <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css' />
+      <link href='http://fonts.googleapis.com/css?family=Merriweather:300' rel='stylesheet' type='text/css'/>
+      <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:200,400,700' rel='stylesheet' type='text/css'/>
+      <link rel="stylesheet" type="text/css" href="/theme/css/icons.css"/>
+      <link rel="stylesheet" type="text/css" href="/theme/css/styles.css"/>
+      <meta charset="utf-8" />
+  </head>
+
+  <body id="index">
+    <!-- header -->
+    <header class="siteheader">
+      <!-- site image -->
+        <div class= "siteimage">
+          <a class="nodec" href=images/headshot.jpg>
+            <img width="200" height="200" src=images/headshot.jpg>
+          </a>
+        </div>
+
+      <div class = "sitebanner">
+        <h1><a class="sitetitle nodec" href="">A Pelican Blog</a></h1>
+        <h3 class ="sitesubtitle">Compter Vision Guy</h3>
+        <!-- nav -->
+        <nav class="menu">
+          <ul>
+            <!-- menu items-->
+              <li><a class="nodec" href="/">home</a></li>
+              <li><a class="nodec" href="/pages/about-brian.html">about</a></li>
+              <li><a class="nodec" href="/blog.html">blog</a></li>
+            <!--pages-->
+            <!-- services icons -->
+              <li><a class="nodec icon-github" href="https://github.com/brikeats"></a></li>
+          </ul>
+        </nav>
+      </div> <!-- sitebanner -->
+    </header>
+
+    <!-- content -->
+
+<section class="content">
+
+  <h3 class="posttitle">
+    <a class="nodec" href="/receipt_reader.html" rel="bookmark" title="Permalink to Receipt Reader">
+      Receipt Reader
+    </a>
+  </h3>
+
+  <div class="postinfo">
+    <p class="published" title="2017-10-31T00:00:00-05:00">
+      Tue 31 October 2017
+    </p>
+
+  </div><!-- .postinfo -->
+
+  <div class="article">
+    <p>I had the idea to write an app that reads and parses the contents of a photo of a receipt to enable splitting of the bill. This idea came to me when splitting a large happy hour check with 15 friends. Personally, I don't care about the money, and after a few beers, I would happily pay more than my share, but some of the other people in our party were pretty anal about it -- breaking out the calculators, computing the tip down to the exact cent, etc. "There's got to be a better way!" I thought.  </p>
+<p>Turns out <a href="https://play.google.com/store/apps/details?id=com.bring10.tab&amp;hl=en">somebody alread had this idea</a>, but I thought this would be a good exercise, and that I might be able to write a more robust algorithm vs. the apps already on the market.</p>
+<h2>Backend</h2>
+<p>I wound up writing the backend for a <a href="https://github.com/brikeats/receipt-reader">receipt reader app</a>. This is a flask app hosted on heroku. It accepts <code>GET</code> requests with a receipt image attached, and returns the parsed contents of the receipts as JSON. You can test it out by downloading <a href="/images/receipt.jpg">this image</a> and sending it to the heroku server with with the command <code>curl -F "file=@receipt.jpg" https://receipt-reader-bk.herokuapp.com/</code> and, after a 15-second delay, the server should response with </p>
+<div class="highlight"><pre><span></span>{
+  &quot;items&quot;: [
+    {
+      &quot;name&quot;: &quot;Hac Cheese&quot;, 
+      &quot;price&quot;: 7.0, 
+      &quot;quantity&quot;: 1
+    }, 
+    {
+      &quot;name&quot;: &quot;Madras Chicken Sando&quot;, 
+      &quot;price&quot;: 14.0, 
+      &quot;quantity&quot;: 1
+    }, 
+    {
+      &quot;name&quot;: &quot;Mussels&quot;, 
+      &quot;price&quot;: 5.33, 
+      &quot;quantity&quot;: 1
+    }, 
+    {
+      &quot;name&quot;: &quot;1/3 Charcuterie&quot;, 
+      &quot;price&quot;: 4.0, 
+      &quot;quantity&quot;: 1
+    }, 
+    {
+      &quot;name&quot;: &quot;Brussel Sprouts&quot;, 
+      &quot;price&quot;: 2.0, 
+      &quot;quantity&quot;: 1
+    }, 
+    {
+      &quot;name&quot;: &quot;Fries&quot;, 
+      &quot;price&quot;: 4.0, 
+      &quot;quantity&quot;: 1
+    }, 
+    {
+      &quot;name&quot;: &quot;2 Half HA Tina&quot;, 
+      &quot;price&quot;: 10.0, 
+      &quot;quantity&quot;: 1
+    }, 
+    {
+      &quot;name&quot;: &quot;Half SOB Goat&quot;, 
+      &quot;price&quot;: 5.0, 
+      &quot;quantity&quot;: 1
+    }, 
+    {
+      &quot;name&quot;: &quot;Halt Beatbock&quot;, 
+      &quot;price&quot;: 4.0, 
+      &quot;quantity&quot;: 1
+    }, 
+    {
+      &quot;name&quot;: &quot;Fun Lost Abbey&quot;, 
+      &quot;price&quot;: 6.0, 
+      &quot;quantity&quot;: 1
+    }, 
+    {
+      &quot;name&quot;: &quot;Fun Wreckage&quot;, 
+      &quot;price&quot;: 7.0, 
+      &quot;quantity&quot;: 1
+    }, 
+    {
+      &quot;name&quot;: &quot;Half A eman&quot;, 
+      &quot;price&quot;: 4.0, 
+      &quot;quantity&quot;: 1
+    }, 
+    {
+      &quot;name&quot;: &quot;Full Whiner&quot;, 
+      &quot;price&quot;: 8.0, 
+      &quot;quantity&quot;: 1
+    }
+  ], 
+  &quot;subtotal&quot;: 80.33, 
+  &quot;total&quot;: 88.57
+}
+</pre></div>
+
+
+<p>Not quite perfect, but pretty damn good. I think it got all the prices right. Another example image is <a href="/images/receipt2.jpg">here</a>.</p>
+<h2>Algorithm</h2>
+<h3>Preprocessing</h3>
+<p>The preprocessing script takes a possibly-shitty input image, and prepares it for OCR. Specifically,</p>
+<ul>
+<li>convert to grayscale</li>
+<li>median filter heavily</li>
+<li>use large-scale edge response to get the strongest:<ul>
+<li>horizontal line in the top half of the image</li>
+<li>horizontal line in the bottom half of the image</li>
+<li>vertical line in the left half of the image</li>
+<li>vertical line in the right half of the image
+   These lines are the receipt edges. This step assumes that the receipt is lighter in value than the background.</li>
+</ul>
+</li>
+<li>Intersect the lines to get the corners of the receipt. </li>
+<li>Warp so that the corners are axis-aligned. This makes the receipt image rectangular and has the effect of cropping out the background.</li>
+</ul>
+<p>I initially experimented with directly detecting the corners using templates, rather than detecting the edges and then computing their intersection. I've found the method desribed above to be more robust to cast shadows that fall across the receipt and to work better when the receipt is not lying flat on the surface.</p>
+<p>The notebook used to produce develop the preprocessing script can be viewed <a href="/notebooks/preprocess.html">here</a> or downloaded <a href="/notebooks/preprocess.ipynb">here</a>.</p>
+<h3>OCR</h3>
+<p>I used Azure's computer vision API to do the OCR. Google and amazon also offer such services, but Azure's API was the only one that returns the bounding box of each of the words. This is very important for parsing the contents. In addition to the word bounding boxes, the Azure API also tries to group the words into sections. I didn't find this to be useful at all.</p>
+<h3>Parsing</h3>
+<p>All of the receipts that I've looked at for this project have the prices right-aligned with a small margin. The algorithm detects the prices first, and then reads the rest of the line:</p>
+<ul>
+<li>Select the words that have numerals</li>
+<li>Compute the coordinates of right-hand side (RHS) of all the numerical words</li>
+<li>Find a line that passes through a lot of the numerical word RHS's. This line should be close to vertical -- it is the right-hand margin of the receipt. The numerical words whose bounding boxes lie on the right-hand margin are probably prices.</li>
+<li>For each price-word, we get the other words whose bounding boxes have a similar y-location. These words are on the same line as the price-word, so they are the item names. </li>
+<li>Parse the prices and convert to floating point. This should include fixing common OCR errors (like mixing up the letter "O" and the numeral zero).</li>
+<li>Search the item names for keywords "tax", "subtotal", and "total". This should include variants like "sub-total", "amount due", etc.</li>
+</ul>
+<p>Finally the results are packed into a JSON object and served by Flask.</p>
+<p>The notebook used to produce develop the OCR and content parsing can be viewed <a href="/notebooks/azure_api.html">here</a> or downloaded <a href="/notebooks/azure_api.ipynb">here</a>.</p>
+<h2>Front end</h2>
+<p>Although I've written <a href="https://github.com/brikeats/Compass">simple android apps</a> for using my phone's sensors, I'm hardly an expert on Android development (I lean pretty hard on the IDE to help me out), so there's no functional frontend for this app. If you have Android development experience and are interested in building this out, send me an email!</p>
+  </div><!-- .content -->
+
+</section>
+
+
+    <!-- footer -->
+    <footer>
+      <p>
+        © Brian Keating, license <a href=""> </a>
+        unless otherwise noted.
+        Generated by <a href= "http://docs.getpelican.com/">Pelican</a> with
+        <a href="http://github.com/porterjamesj/crowsfoot">crowsfoot</a> theme.
+      </p>
+    </footer>
+  </body>
+</html>
