@@ -51,7 +51,7 @@
   </h3>
 
   <div class="postinfo">
-    <p class="published" title="2017-10-23T00:00:00-05:00">
+    <p class="published" title="2017-10-23T00:00:00-07:00">
       Mon 23 October 2017
     </p>
 
@@ -66,9 +66,9 @@
 <h2>Robot Description in URDF</h2>
 <p>The frames assigned by <code>ultrasonic_array</code> are just strings. In order to define the geometry, I created a package for describing the robot's geometry and wrote <a href="https://github.com/brikeats/ROS/blob/master/workspace/src/adam_description/urdf/adam.urdf">a URDF description of the robot</a> by following the <a href="http://wiki.ros.org/urdf/Tutorials">ROS tutorial</a>. A few of the components were too complicated to draw manually, so I specified them as 3D models created in Sketchup. There's no Sketchup for Ubuntu (my laptop OS), but it runs fine  with <a href="https://www.playonlinux.com/en/">PlayOnLinux</a>. From Sketchup, export the <a href="https://github.com/brikeats/ROS/tree/master/workspace/src/adam_description/meshes">3D models as <code>.dae</code> files</a>, which can be included in the URDF. </p>
 <p>While working on the URDF, you can view the model with rviz with the command <code>roslaunch adam_description display.launch</code>. <a href="https://github.com/brikeats/ROS/blob/master/workspace/src/adam_description/launch/display.launch">The launch file</a> uses <a href="http://wiki.ros.org/joint_state_publisher">joint_state_publisher</a> and <a href="http://wiki.ros.org/robot_state_publisher">robot_state_publisher</a> to publish the poses of all the robot components (including the sensors), and launches rviz to view it. My half-finished model looks like this:</p>
-<p><img alt="Alt Text" src="/images/rviz_screenshot.png" /></p>
+<p><img alt="Alt Text" src="/images/rviz_screenshot.png"></p>
 <p>The actual robot has tank treads and is more complete than the model:</p>
-<p><img alt="Alt Text" src="/images/robot.jpg" /></p>
+<p><img alt="Alt Text" src="/images/robot.jpg"></p>
 <h2>Real-time rendering of Range measurements</h2>
 <p>Putting it all together, define the robot in URDF, broadcast the robot geometry and view it with <code>roslaunch adam_description display.launch</code>. Then start the ultrasonic array node with <code>rosrun ultrasonic_array ultrasonic_array</code> to begin reading the arduino printouts and broadcasting the Range messages. From in the Rviz GUI, manually add the Range measurements. In order for the Range messages to display correctly, the frame defined in the <code>ultrasonic_array</code> must match one of the frames in the URDF description. The result:</p>
 <h1></h1>
