@@ -62,7 +62,7 @@
 <p>Turns out <a href="https://play.google.com/store/apps/details?id=com.bring10.tab&amp;hl=en">somebody alread had this idea</a>, but I thought this would be a good exercise, and that I might be able to write a more robust algorithm compared with the apps already on the market.</p>
 <h2>Backend</h2>
 <p>I wound up writing the backend for a <a href="https://github.com/brikeats/receipt-reader">receipt reader app</a>. This is a flask app hosted on heroku. It accepts <code>GET</code> requests with a receipt image attached, and returns the parsed contents of the receipts as JSON. You can test it out by downloading <a href="/images/receipt.jpg">this image</a> and sending it to the heroku server with with the command <code>curl -F "file=@receipt.jpg" https://receipt-reader-bk.herokuapp.com/</code> and, after a 15-second delay, the server should response with </p>
-<div class="highlight"><pre>{
+<div class="highlight"><pre><span></span>{
   &quot;items&quot;: [
     {
       &quot;name&quot;: &quot;Hac Cheese&quot;, 
