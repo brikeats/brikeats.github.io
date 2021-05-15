@@ -72,7 +72,7 @@
 <h2>Real-time rendering of Range measurements</h2>
 <p>Putting it all together, define the robot in URDF, broadcast the robot geometry and view it with <code>roslaunch adam_description display.launch</code>. Then start the ultrasonic array node with <code>rosrun ultrasonic_array ultrasonic_array</code> to begin reading the arduino printouts and broadcasting the Range messages. From in the Rviz GUI, manually add the Range measurements. In order for the Range messages to display correctly, the frame defined in the <code>ultrasonic_array</code> must match one of the frames in the URDF description. The result:</p>
 <h1></h1>
-<p><iframe width="560" height="315" src="https://www.youtube.com/embed/xQT_J7t7Gr0?rel=0" frameborder="0" allowfullscreen></iframe></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xQT_J7t7Gr0?rel=0" frameborder="0" allowfullscreen></iframe>
 <h1></h1>
 <p>The Range measurements are displayed as cones which indicate the field of view of the sensor. There's a half second lag, partly due to the wifi -- the visualization node runs on my laptop, but the other nodes are running on the raspberry pi.</p>
   </div><!-- .content -->
